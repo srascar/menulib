@@ -1,0 +1,4 @@
+services:
+#    menulib_core.example:
+#        class: Menulib\Bundle\CoreBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,11 @@
+menulib_mb:
+  host: http://www.mangerbouger.fr/fam/json
+
+  mb_methods:
+    - pg_front.action
+
+  target_ids:
+    - root.current_week
+
+  allowed_actions:
+    - generate

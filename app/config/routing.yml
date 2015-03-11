@@ -1,0 +1,7 @@
+menulib_mb:
+    resource: "@MenulibMbBundle/Resources/config/routing.yml"
+    prefix:   /
+
+menulib_core:
+    resource: "@MenulibCoreBundle/Resources/config/routing.yml"
+    prefix:   /

@@ -1,0 +1,3 @@
+menulib_mb_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MenulibMbBundle:Default:index }
