@@ -10,6 +10,9 @@
 
 namespace Menulib\Bundle\MbBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Menulib\Bundle\MbBundle\Entity\Mbparam;
+
 /**
  * Class MbQuery
  * @package Menulib\Bundle\MbBundle\Entity
@@ -32,7 +35,7 @@ class MbQuery
     protected $action;
 
     /**
-     * @var array
+     * @var ArrayCollection
      */
     protected $params;
 
@@ -97,7 +100,7 @@ class MbQuery
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getParams()
     {
@@ -105,10 +108,41 @@ class MbQuery
     }
 
     /**
-     * @param array $params
+     * @param ArrayCollection $params
      */
-    public function setParams(array $params)
+    public function setParams(ArrayCollection $params)
     {
         $this->params = $params;
+    }
+
+    /**
+     * @return array
+     */
+    public function getQueryParameters()
+    {
+        $elements = array();
+
+        if (!$params = $this->getParams()) {
+            return $elements;
+        }
+
+        /** @var MbParam $param */
+        foreach ($params as $param) {
+            $elements[$param->getKey()] = $param->getValue();
+        }
+
+        return $elements;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString() {
+        return json_encode(array(
+                'method' => $this->getMethod(),
+                'target_id' => $this->getMethod(),
+                'action' => $this->getMethod(),
+                'params' => array($this->getQueryParameters()),
+            ));
     }
 }

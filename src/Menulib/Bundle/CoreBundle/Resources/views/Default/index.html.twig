@@ -1,1 +1,14 @@
 Hello World!
+
+<p>
+    <ul>
+        {%  for key, value in mbQuery.queryParameters %}
+            <li>
+                <u>{{ key }} : </u>{{ value }}
+            </li>
+        {% endfor %}
+    </ul>
+</p>
+<p>
+    {{ mbResponse }}
+</p>

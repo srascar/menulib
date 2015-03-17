@@ -12,6 +12,7 @@ namespace Menulib\Component\Api\Repository;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 
 
 class ApiRepository
@@ -22,41 +23,24 @@ class ApiRepository
     protected $host;
 
     /**
-     * @var string
-     */
-    protected $entityClass;
-
-    /**
      * @var ClientInterface
      */
     protected $httpClient;
 
     /**
-     * @param ClientInterface $httpClient
+     * @var FormFactoryInterface
      */
-//    public function __construct(ClientInterface $httpClient)
-//    {
-//        $this->httpClient = $httpClient;
-//    }
-    public function __construct()
+    protected $formFactory;
+
+    /**
+     * @param FormFactoryInterface $formFactory
+     * @param string               $host
+     */
+    public function __construct(FormFactoryInterface $formFactory, $host)
     {
+        $this->formFactory = $formFactory;
+        $this->host = $host;
         $this->httpClient = new Client();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEntityClass()
-    {
-        return $this->entityClass;
-    }
-
-    /**
-     * @param mixed $entityClass
-     */
-    public function setEntityClass($entityClass)
-    {
-        $this->entityClass = $entityClass;
     }
 
     /**
@@ -68,7 +52,7 @@ class ApiRepository
     }
 
     /**
-     * @param mixed $host
+     * @param string $host
      */
     public function setHost($host)
     {

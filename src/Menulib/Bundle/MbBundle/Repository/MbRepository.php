@@ -21,7 +21,7 @@ class MbRepository extends ApiRepository
      */
     public function executeQuery(MbQuery $mbQuery)
     {
-        $form = new MbQueryType($mbQuery);
+        $form = $this->formFactory->create(new MbQueryType(), $mbQuery);
 
         $response = $this->httpClient->post($this->getHost(), [
             'headers' => [

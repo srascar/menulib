@@ -19,8 +19,11 @@ class MbQueryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('params')
-            ->add('save', 'submit');
+            ->add('method')
+            ->add('targetId')
+            ->add('action')
+            ->add('queryParameters')
+            ;
     }
     /**
      * Returns the name of this type.
