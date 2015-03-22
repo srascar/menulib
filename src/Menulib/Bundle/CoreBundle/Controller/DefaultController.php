@@ -5,7 +5,8 @@ namespace Menulib\Bundle\CoreBundle\Controller;
 use Doctrine\Common\Collections\ArrayCollection;
 use Menulib\Bundle\MbBundle\Entity\Mbparam;
 use Menulib\Bundle\MbBundle\Entity\MbQuery;
-use Menulib\Bundle\MbBundle\Repository\MbRepository;
+use Menulib\Bundle\MbBundle\Form\MbQueryType;
+use Menulib\Component\Api\Repository\ApiRepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
@@ -20,9 +21,12 @@ class DefaultController extends Controller
         $mbQuery = new MbQuery();
         $mbQuery->setParams($mbParams);
 
+        $form = $this->createForm(new MbQueryType(), $mbQuery);
+
+        /** @var ApiRepositoryInterface $mbRepository */
         $mbRepository = $this->get('menulib_mb.repository.mb_repository');
 
-        $mbResponse = $mbRepository->executeQuery($mbQuery);
+        $mbResponse = $mbRepository->executeQuery($form);
 
         return $this->render(
             'MenulibCoreBundle:Default:index.html.twig',

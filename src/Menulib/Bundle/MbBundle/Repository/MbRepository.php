@@ -4,9 +4,8 @@
 namespace Menulib\Bundle\MbBundle\Repository;
 
 
-use Menulib\Bundle\MbBundle\Entity\MbQuery;
-use Menulib\Bundle\MbBundle\Form\MbQueryType;
 use Menulib\Component\Api\Repository\ApiRepository;
+use Symfony\Component\Form\FormInterface;
 
 /**
  * Class MbRepository
@@ -15,19 +14,17 @@ use Menulib\Component\Api\Repository\ApiRepository;
 class MbRepository extends ApiRepository
 {
     /**
-     * @param MbQuery $mbQuery
+     * @param FormInterface $form
      *
      * @return string
      */
-    public function executeQuery(MbQuery $mbQuery)
+    public function executeQuery(FormInterface $form)
     {
-        $form = $this->formFactory->create(new MbQueryType(), $mbQuery);
-
         $response = $this->httpClient->post($this->getHost(), [
             'headers' => [
-                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Content-Type' => 'multipart/form-data',
             ],
-            'body' => $form->getData()
+            'body' => [$form->getData()->__toArray()]
         ]);
 
         return $response;

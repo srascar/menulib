@@ -21,7 +21,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "nelmio/api-doc-bundle": "~2.8",
         "jms/serializer": "0.16.*",
-        "guzzlehttp/guzzle": "~5.2"
+        "guzzlehttp/guzzle": "~5.2",
+        "jms/serializer-bundle": "0.13.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

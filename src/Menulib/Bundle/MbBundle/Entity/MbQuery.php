@@ -133,16 +133,22 @@ class MbQuery
 
         return $elements;
     }
-
-    /**
-     * @return string
-     */
-    public function __toString() {
-        return json_encode(array(
-                'method' => $this->getMethod(),
-                'target_id' => $this->getMethod(),
-                'action' => $this->getMethod(),
-                'params' => array($this->getQueryParameters()),
-            ));
+//
+//    /**
+//     * @return string
+//     */
+//    public function __toString()
+//    {
+//        return json_encode([$this->__toArray()]);
+//    }
+//
+    public function __toArray()
+    {
+        return [
+            'method' => $this->getMethod(),
+            'target_id' => $this->getTargetId(),
+            'action' => $this->getAction(),
+            'params' => array($this->getQueryParameters()),
+        ];
     }
 }
