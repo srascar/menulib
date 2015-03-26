@@ -11,7 +11,6 @@
 namespace Menulib\Bundle\MbBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Menulib\Bundle\MbBundle\Entity\Mbparam;
 
 /**
  * Class MbQuery
@@ -132,23 +131,5 @@ class MbQuery
         }
 
         return $elements;
-    }
-//
-//    /**
-//     * @return string
-//     */
-//    public function __toString()
-//    {
-//        return json_encode([$this->__toArray()]);
-//    }
-//
-    public function __toArray()
-    {
-        return [
-            'method' => $this->getMethod(),
-            'target_id' => $this->getTargetId(),
-            'action' => $this->getAction(),
-            'params' => array($this->getQueryParameters()),
-        ];
     }
 }

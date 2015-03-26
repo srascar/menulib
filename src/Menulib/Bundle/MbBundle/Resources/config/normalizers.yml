@@ -1,0 +1,5 @@
+services:
+  mb_query_normalizer:
+    class: Menulib\Bundle\MbBundle\Normalizer\MbQueryNormalizer
+    tags:
+      - { name: serializer.normalizer }

@@ -11,6 +11,7 @@
 namespace Menulib\Component\Api\Repository;
 
 
+use GuzzleHttp\Message\ResponseInterface;
 use Symfony\Component\Form\FormInterface;
 
 Interface ApiRepositoryInterface
@@ -28,7 +29,7 @@ Interface ApiRepositoryInterface
     /**
      * @param FormInterface $form
      *
-     * @return string
+     * @return ResponseInterface
      */
     public function executeQuery(FormInterface $form);
 }

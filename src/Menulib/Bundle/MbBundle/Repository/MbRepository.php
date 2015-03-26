@@ -4,6 +4,7 @@
 namespace Menulib\Bundle\MbBundle\Repository;
 
 
+use GuzzleHttp\Message\ResponseInterface;
 use Menulib\Component\Api\Repository\ApiRepository;
 use Symfony\Component\Form\FormInterface;
 
@@ -16,7 +17,7 @@ class MbRepository extends ApiRepository
     /**
      * @param FormInterface $form
      *
-     * @return string
+     * @return ResponseInterface
      */
     public function executeQuery(FormInterface $form)
     {
@@ -24,7 +25,7 @@ class MbRepository extends ApiRepository
             'headers' => [
                 'Content-Type' => 'multipart/form-data',
             ],
-            'body' => [$form->getData()->__toArray()]
+            'body' => [$this->normalizer->normalize($form->getData())]
         ]);
 
         return $response;

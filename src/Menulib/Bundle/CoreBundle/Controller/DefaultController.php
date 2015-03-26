@@ -26,13 +26,13 @@ class DefaultController extends Controller
         /** @var ApiRepositoryInterface $mbRepository */
         $mbRepository = $this->get('menulib_mb.repository.mb_repository');
 
-        $mbResponse = $mbRepository->executeQuery($form);
+        $response = $mbRepository->executeQuery($form);
 
         return $this->render(
             'MenulibCoreBundle:Default:index.html.twig',
             array(
                 'mbQuery'   => $mbQuery,
-                'mbResponse' => $mbResponse,
+                'response' => $response->getBody(),
             )
         );
     }

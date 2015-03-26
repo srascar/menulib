@@ -21,9 +21,11 @@ class MenulibMbExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-        $container->setParameter('mb_api_host', $config['api_host']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+        $loader->load('normalizers.yml');
+
+        $container->setParameter('mb_api_host', $config['api_host']);
     }
 }

@@ -1,9 +1,4 @@
 services:
-  get_set_method_normalizer:
-    class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
-    tags:
-      - { name: serializer.normalizer }
-
   menulib_mb.repository.mb_repository:
      class: Menulib\Bundle\MbBundle\Repository\MbRepository
-     arguments: [@form.factory, @get_set_method_normalizer, %mb_api_host%]
+     arguments: [@form.factory, @mb_query_normalizer, %mb_api_host%]
