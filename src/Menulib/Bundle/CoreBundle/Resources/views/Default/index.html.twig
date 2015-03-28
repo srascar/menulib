@@ -1,14 +1,10 @@
 Hello World!
 
 <p>
-    <ul>
-        {%  for key, value in mbQuery.queryParameters %}
-            <li>
-                <u>{{ key }} : </u>{{ value }}
-            </li>
-        {% endfor %}
-    </ul>
+    {{ form(form) }}
 </p>
 <p>
-    {{ response|raw }}
+    {% if response is defined %}
+        {{ response|raw }}
+    {% endif %}
 </p>

@@ -35,7 +35,7 @@ class MbQueryNormalizer implements NormalizerInterface
             'method' => $object->getMethod(),
             'target_id' => $object->getTargetId(),
             'action' => $object->getAction(),
-            'params' => array($object->getQueryParameters()),
+            'params' => array($object->getParams()),
         ];
     }
 

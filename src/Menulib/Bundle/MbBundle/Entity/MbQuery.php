@@ -34,7 +34,7 @@ class MbQuery
     protected $action;
 
     /**
-     * @var ArrayCollection
+     * @var array
      */
     protected $params;
 
@@ -99,7 +99,7 @@ class MbQuery
     }
 
     /**
-     * @return ArrayCollection
+     * @return array
      */
     public function getParams()
     {
@@ -107,29 +107,10 @@ class MbQuery
     }
 
     /**
-     * @param ArrayCollection $params
+     * @param array $params
      */
-    public function setParams(ArrayCollection $params)
+    public function setParams(array $params)
     {
         $this->params = $params;
-    }
-
-    /**
-     * @return array
-     */
-    public function getQueryParameters()
-    {
-        $elements = array();
-
-        if (!$params = $this->getParams()) {
-            return $elements;
-        }
-
-        /** @var MbParam $param */
-        foreach ($params as $param) {
-            $elements[$param->getKey()] = $param->getValue();
-        }
-
-        return $elements;
     }
 }

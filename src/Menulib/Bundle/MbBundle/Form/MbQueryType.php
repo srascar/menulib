@@ -22,7 +22,8 @@ class MbQueryType extends AbstractType
             ->add('method')
             ->add('targetId')
             ->add('action')
-            ->add('queryParameters')
+            ->add('params', new MbParamsType())
+            ->add('submit', 'submit')
             ;
     }
     /**
