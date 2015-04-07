@@ -1,4 +1,4 @@
 services:
   menulib_mb.repository.mb_repository:
-     class: Menulib\Bundle\MbBundle\Repository\MbRepository
-     arguments: [@form.factory, @mb_query_normalizer, %mb_api_host%]
+    class: Menulib\Bundle\MbBundle\Repository\MbRepository
+    arguments: [@form.factory, %mb_api_host%, 'mb_response', @mb_query_normalizer, @jms_serializer]

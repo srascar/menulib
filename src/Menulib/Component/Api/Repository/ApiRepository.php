@@ -14,7 +14,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 
 abstract class ApiRepository implements ApiRepositoryInterface
@@ -35,20 +34,20 @@ abstract class ApiRepository implements ApiRepositoryInterface
     protected $formFactory;
 
     /**
-     * @var NormalizerInterface
+     * @var string
      */
-    protected $normalizer;
+    protected $className;
 
     /**
      * @param FormFactoryInterface $formFactory
-     * @param NormalizerInterface  $normalizer
      * @param string               $host
+     * @param string               $className
      */
-    public function __construct(FormFactoryInterface $formFactory, NormalizerInterface $normalizer, $host)
+    public function __construct(FormFactoryInterface $formFactory, $host, $className)
     {
         $this->formFactory = $formFactory;
         $this->host = $host;
-        $this->normalizer = $normalizer;
+        $this->className = $className;
         $this->httpClient = new Client();
     }
 

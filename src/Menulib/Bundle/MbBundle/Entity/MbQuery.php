@@ -18,6 +18,10 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class MbQuery
 {
+    const DAYS_LIST_KEY = 'days';
+
+    const SHOPPING_LIST_KEY = 'courses';
+
     /**
      * @var string
      */

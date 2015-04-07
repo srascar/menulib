@@ -1,0 +1,5 @@
+services:
+  menulib_mb.serializer.mb_response_handler:
+    class: Menulib\Bundle\MbBundle\Serializer\MbResponseHandler
+    tags:
+      - { name: jms_serializer.handler, format: 'json', type: 'mb_response', method: deserializeMbResponseFromJson }

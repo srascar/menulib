@@ -25,6 +25,7 @@ class MenulibMbExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
         $loader->load('normalizers.yml');
+        $loader->load('serializer.yml');
 
         $container->setParameter('mb_api_host', $config['api_host']);
     }

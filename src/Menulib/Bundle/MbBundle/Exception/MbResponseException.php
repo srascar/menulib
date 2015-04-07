@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Menulib\Bundle\MbBundle\Entity;
+namespace Menulib\Bundle\MbBundle\Exception;
 
 
-class MbResponse
+class MbResponseException extends \HttpResponseException
 {
 
 } 
